@@ -32,7 +32,9 @@ Dla danych wejściowych:
 3 2
 ```  
 Poprawnym wynikiem jest:  
-`8`  
+```text
+8
+```
 Natomiast dla danych wejściowych:  
 ```text
 4 4
@@ -42,8 +44,9 @@ Natomiast dla danych wejściowych:
 3 2
 ```
 Poprawnym wynikiem jest:  
-`2`  
-  
+```text
+2
+```
 Na rysunku poniżej zilustrowano jabłoń z testów przykładowych. Typy gałęzi podano w miejscach rozgałęzienia.
-![tree]()
+![tree](https://github.com/FranciszekSamiec/Jablka/blob/master/tree.png)
 
