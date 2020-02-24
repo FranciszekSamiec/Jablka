@@ -50,3 +50,7 @@ Poprawnym wynikiem jest:
 Na rysunku poniżej zilustrowano jabłoń z testów przykładowych. Typy gałęzi podano w miejscach rozgałęzienia.
 ![tree](https://github.com/FranciszekSamiec/Jablka/blob/master/tree.png)
 
+## Rozwiązanie
+
+Rozwiązaniem jest programowanie dynamiczne. 
+
