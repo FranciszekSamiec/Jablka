@@ -30,10 +30,10 @@ Dla danych wejściowych:
 1 0
 2 1
 3 2
-```
-Poprawnym wynikiem jest:
-`8`
-Natomiast dla danych wejściowych:
+```  
+Poprawnym wynikiem jest:  
+`8`  
+Natomiast dla danych wejściowych:  
 ```text
 4 4
 0 0
@@ -41,9 +41,9 @@ Natomiast dla danych wejściowych:
 2 1
 3 2
 ```
-Poprawnym wynikiem jest:
-`2`
-
+Poprawnym wynikiem jest:  
+`2`  
+  
 Na rysunku poniżej zilustrowano jabłoń z testów przykładowych. Typy gałęzi podano w miejscach rozgałęzienia.
-
+![tree]()
 
