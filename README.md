@@ -1,4 +1,4 @@
-# Jablka
+# Jabłka
 
 Na działce Bajtazara rośnie rozłożysta jabłoń. Jak w przypadku większości drzew w Bajtocji, każda gałąź
 drzewa dokładnie metr powyżej miejsca rozpoczęcia kończy się lub rozwidla się na dwie mniejsze gałęzie.
