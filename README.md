@@ -52,8 +52,8 @@ Na rysunku poniżej zilustrowano jabłoń z testów przykładowych. Typy gałęz
 
 ## Rozwiązanie
 
-  Rozwiązaniem jest programowanie dynamiczne. Ilość wierzchołków których nie sięgniemy od korzenia przy pomocy drabiny o długości d to ilość wierzchołków których nie sięgniemy od synów korzenia przy pomocy drabiny o długości d - 1 i podobnie dla wnuków korzenia rozważamy drabine o długości d - 2.  
-  Pierwszy pomysł to zróbmy tabele rozmiaru (n + 1)x(n + 1) gdzie w kolumnach będą rodzaje węzłów w wierszach długości drabin a w przecięciu kolumny x i wiersza y znajdzie się ilość jabłek których nie sięgniemy drabiną o długości y zaczynając z węzła typu x. Wypełniając będziemy się więc posługiwać wzorem `tab[x][y] = tab[x - 1][a] + tab[x - 1][b]` gdzie a i b to rodzaje węzłów na jakie rozgałęzia się węzeł y, w przykładzie 4 rozgałęzia się na 2 i 3. Warto zauważyć, że a i b < y (wynika to z treści zadania, posłużymy się tym faktem w dalszej optymalizacji).  
+  Rozwiązaniem jest programowanie dynamiczne. Ilość wierzchołków których nie sięgniemy od korzenia przy pomocy drabiny o długości d to ilość wierzchołków których nie sięgniemy od synów korzenia przy pomocy drabiny o długości `d - 1` i podobnie dla wnuków korzenia rozważamy drabine o długości `d - 2`.  
+  Pierwszy pomysł to zróbmy tabele rozmiaru `(n + 1)x(n + 1)` gdzie w kolumnach będą rodzaje węzłów w wierszach długości drabin a w przecięciu kolumny x i wiersza y znajdzie się ilość jabłek których nie sięgniemy drabiną o długości y zaczynając z węzła typu x. Wypełniając będziemy się więc posługiwać wzorem `tab[x][y] = tab[x - 1][a] + tab[x - 1][b]` gdzie a i b to rodzaje węzłów na jakie rozgałęzia się węzeł y, w przykładzie 4 rozgałęzia się na 2 i 3. Warto zauważyć, że `a i b < y` (wynika to z treści zadania, posłużymy się tym faktem w dalszej optymalizacji).  
 
 Tabela dla przykładu z treści wygląda następująco:  
 
@@ -77,6 +77,6 @@ W pierszych dwóch wierszach znajdują się instrukcje do wypełniania tabeli - 
 2 8 
 2
 ```  
-Lepszym pomysłem jest trzymać jedynie dwa kolejne wiersze w pamięci gdyż do wypełnienia danego wiersza potrzebujemy jedynie poprzedniego wiersza. Można również połączyć oba te pomysły - takie rozwiązanie wybrałem w swojej implementacji. Zakładając, że trzymamy long int'y, takie rozwiązanie pamięciowo zajmie `10^6 * 2 * 4 / 10^6 = 8` megabajtów. Możemy pójść o krok dalej - wystarczy wypełniać każdy wiersz od końca i usuwać ostatni element poprzedniego gdyż w danej komórce odwołujemy się do przecięcia kolumn i wierszy o indeksach ostro mniejszych. Dzięki temu sumarycznie trzymamy jeden wiersz, gdy połączymy to z usunięciem zer pod przekątną to taki wiersz się "kurczy" zmniejsza o jeden za każdym nowym wierszem. Wykorzystamy wtedy 4 mb na tablice dynamiczną, pierwsze podejście wykorzystywało `(10^6 * 100 * 4) / 10^6 = 400` megabajtów. Koszt czasowy to O(nd).
+Lepszym pomysłem jest trzymać jedynie dwa kolejne wiersze w pamięci gdyż do wypełnienia danego wiersza potrzebujemy jedynie poprzedniego wiersza. Można również połączyć oba te pomysły - takie rozwiązanie wybrałem w swojej implementacji. Zakładając, że trzymamy long int'y, takie rozwiązanie pamięciowo zajmie `(10^6 * 2 * 4) / 10^6 = 8` megabajtów. Możemy pójść o krok dalej - wystarczy wypełniać każdy wiersz od końca i usuwać ostatni element poprzedniego gdyż w danej komórce odwołujemy się do przecięcia kolumn i wierszy o indeksach ostro mniejszych. Dzięki temu sumarycznie trzymamy jeden wiersz, gdy połączymy to z usunięciem zer pod przekątną to taki wiersz się "kurczy" zmniejsza o jeden za każdym nowym wierszem. Wykorzystamy wtedy 4 mb na tablice dynamiczną, pierwsze podejście wykorzystywało `(10^6 * 100 * 4) / 10^6 = 400` megabajtów. Koszt czasowy to `O(nd)`.
 
 
