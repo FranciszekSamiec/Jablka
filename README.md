@@ -53,7 +53,7 @@ Na rysunku poniżej zilustrowano jabłoń z testów przykładowych. Typy gałęz
 ## Rozwiązanie
 
   Rozwiązaniem jest programowanie dynamiczne. Ilość wierzchołków których nie sięgniemy od korzenia przy pomocy drabiny o długości d to ilość wierzchołków których nie sięgniemy od synów korzenia przy pomocy drabiny o długości `d - 1` i podobnie dla wnuków korzenia rozważamy drabine o długości `d - 2`.  
-  Pierwszy pomysł to zróbmy tabele rozmiaru `(n + 1)x(n + 1)` gdzie w kolumnach będą rodzaje węzłów w wierszach długości drabin a w przecięciu kolumny x i wiersza y znajdzie się ilość jabłek których nie sięgniemy drabiną o długości y zaczynając z węzła typu x. Wypełniając będziemy się więc posługiwać wzorem `tab[x][y] = tab[x - 1][a] + tab[x - 1][b]` gdzie a i b to rodzaje węzłów na jakie rozgałęzia się węzeł y, w przykładzie 4 rozgałęzia się na 2 i 3. Warto zauważyć, że `a i b < y` (wynika to z treści zadania, posłużymy się tym faktem w dalszej optymalizacji).  
+  Pierwszy pomysł to zróbmy tabele rozmiaru `(n + 1)x(d + 1)` gdzie w kolumnach będą rodzaje węzłów w wierszach długości drabin a w przecięciu kolumny x i wiersza y znajdzie się ilość jabłek których nie sięgniemy drabiną o długości y zaczynając z węzła typu x.   Wypełniając będziemy się więc posługiwać wzorem `tab[x][y] = tab[x - 1][a] + tab[x - 1][b]` gdzie a i b to rodzaje węzłów na jakie rozgałęzia się węzeł y, w przykładzie 4 rozgałęzia się na 2 i 3. Warto zauważyć, że `a i b < y` (wynika to z treści zadania, posłużymy się tym faktem w dalszej optymalizacji).  
 
 Tabela dla przykładu z treści wygląda następująco:  
 
