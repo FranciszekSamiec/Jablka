@@ -56,15 +56,16 @@ Na rysunku poniżej zilustrowano jabłoń z testów przykładowych. Typy gałęz
   Pierwszy pomysł to zróbmy tabele rozmiaru (n + 1)x(n + 1) gdzie w kolumnach będą rodzaje węzłów w wierszach długości drabin a w przecięciu kolumny x i wiersza y znajdzie się ilość jabłek których nie sięgniemy drabiną o długości y zaczynając z węzła typu x. Wypełniając będziemy się więc posługiwać wzorem tab[x][y] = tab[x - 1][a] + tab[x - 1][b] gdzie a i b to rodzaje węzłów na jakie rozgałęzia się węzeł y, w przykładzie 4 rozgałęzia się na 2 i 3. Warto zauważyć, że a i b < y (wynika to z treści zadania, posłużymy się tym faktem w dalszej optymalizacji).  
 
 Tabela dla przykładu z treści wygląda następująco:  
-
-| X | 0 | 1 | 2 | 3 | 4  |
+|   |   |   |   |   |    |
 |---|---|---|---|---|----|
+| X | X | 0 | 0 | 1 | 2  |
+| X | X | 0 | 1 | 2 | 3  |
+|---|---|---|---|---|----|
+| X | 0 | 1 | 2 | 3 | 4  |
 | 0 | 1 | 3 | 5 | 9 | 15 |
 | 1 | 0 | 2 | 4 | 8 | 14 |
 | 2 | 0 | 0 | 2 | 6 | 12 |
 | 3 | 0 | 0 | 0 | 2 | 8  |
-| 4 | 0 | 0 | 0 | 0 | 2  |
-
 
 
 
