@@ -2,13 +2,17 @@
 #include <iostream>
 
 using namespace std;
+const int mod = 1000000000
 
 int main()
 {
 	long long int n, d;
 	cin >> n;
 	cin >> d;
-
+	
+	// vec[i] mówi na jakie węzły rozgałęzia się węzeł i + 1, jest to 
+	// pierwszy i drugi rząd z przykładowej tabeli w pliku readme tylko,
+	// że tu mamy pary zamiast dwóch wierszy.
 	vector<pair<long int, long int>> vec;
 
 	for (long long int a = 0; a < n; a++) {
@@ -26,7 +30,7 @@ int main()
 	pierwszy[0] = 1;
 
 	for (long long int i = 1; i < pierwszy.size(); i++) {
-		pierwszy[i] = (pierwszy[vec[i - 1].first] + pierwszy[vec[i - 1].second] + 1) % 1000000000;
+		pierwszy[i] = (pierwszy[vec[i - 1].first] + pierwszy[vec[i - 1].second] + 1) % mod;
 	}
 
 	long long int rozmiar2 = n;
@@ -48,12 +52,12 @@ int main()
 			else
 				prawy = pierwszy[vec[k + i - 1].second - i + 1];
 
-			drugi[k] = (lewy + prawy) % 1000000000;
+			drugi[k] = (lewy + prawy) % mod;
 		}
 		pierwszy.resize(rozmiar2);
 		pierwszy = drugi;
 		rozmiar2--;
 		drugi.resize(rozmiar2, -1);
 	}
-	cout << pierwszy[rozmiar2] % 1000000000 << endl;
+	cout << pierwszy[rozmiar2] % mod << endl;
 }
