@@ -67,7 +67,16 @@ Tabela dla przykładu z treści wygląda następująco:
 | 1 | 0 | 2 | 4 | 8 | 14 |
 | 2 | 0 | 0 | 2 | 6 | 12 |
 | 3 | 0 | 0 | 0 | 2 | 8  |
+| 4 | 0 | 0 | 0 | 0 | 2  |
 
-W pierszych dwóch wierszach znajdują się instrukcje do wypełniania tabeli - na jakie węzł rozgałęzia się dany węze np. 4 na 2 i 3 albo 3 na 2 i 1 - to są właśnie te a i b we wzorze `tab[x][y] = tab[x - 1][a] + tab[x - 1][b]`. Zauważmy teraz, że pod przekątną sa same zera. możemy więc trzymać listę list zamiast tablicy dwuwymiarowej, jednak takie rozwiązanie nie satysfakcjonuje nas pamięciowo a ponadto komplikuje indeksologię. Lepszym pomysłem jest trzymać jedynie dwa kolejne wiersze w pamięci gdyż do wypełnienia danego wiersza potrzebujemy jedynie poprzedniego wiersza. Można również połączyć oba te pomysły - takie rozwiązanie wybrałem w swojej implementacji. Zakładając, że trzymamy long int'y, takie rozwiązanie pamięciowo zajmie `10^6 * 2 * 4 / 10^6 = 8` megabajtów. Możemy pójść o krok dalej - wystarczy wypełniać każdy wiersz od końca i usuwać ostatni element poprzedniego gdyż w danej komórce odwołujemy się do przecięcia kolumn i wierszy o indeksach ostro mniejszych. Dzięki temu sumarycznie trzymamy jeden wiersz, gdy połączymy to z usunięciem zer pod przekątną to taki wiersz się "kurczy" zmniejsza o jeden za każdym nowym wierszem. Wykorzystamy wtedy 4 mb na tablice dynamiczną, pierwsze podejście wykorzystywało `(10^6 * 100 * 4) / 10^6 = 400` megabajtów. Koszt czasowy to O(nd).
+W pierszych dwóch wierszach znajdują się instrukcje do wypełniania tabeli - na jakie węzły rozgałęzia się dany węzeł np. 4 na 2 i 3 albo 3 na 2 i 1 - to są właśnie te a i b we wzorze `tab[x][y] = tab[x - 1][a] + tab[x - 1][b]`. Zauważmy teraz, że pod przekątną sa same zera. możemy więc trzymać listę list zamiast tablicy dwuwymiarowej, jednak takie rozwiązanie nie satysfakcjonuje nas pamięciowo a ponadto komplikuje indeksologię. 
+```text
+1 3 5 9 15
+2 4 8 14
+2 6 12
+2 8 
+2
+```  
+Lepszym pomysłem jest trzymać jedynie dwa kolejne wiersze w pamięci gdyż do wypełnienia danego wiersza potrzebujemy jedynie poprzedniego wiersza. Można również połączyć oba te pomysły - takie rozwiązanie wybrałem w swojej implementacji. Zakładając, że trzymamy long int'y, takie rozwiązanie pamięciowo zajmie `10^6 * 2 * 4 / 10^6 = 8` megabajtów. Możemy pójść o krok dalej - wystarczy wypełniać każdy wiersz od końca i usuwać ostatni element poprzedniego gdyż w danej komórce odwołujemy się do przecięcia kolumn i wierszy o indeksach ostro mniejszych. Dzięki temu sumarycznie trzymamy jeden wiersz, gdy połączymy to z usunięciem zer pod przekątną to taki wiersz się "kurczy" zmniejsza o jeden za każdym nowym wierszem. Wykorzystamy wtedy 4 mb na tablice dynamiczną, pierwsze podejście wykorzystywało `(10^6 * 100 * 4) / 10^6 = 400` megabajtów. Koszt czasowy to O(nd).
 
 
